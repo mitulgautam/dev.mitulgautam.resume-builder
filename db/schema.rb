@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_14_091106) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_14_092027) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -52,6 +52,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_091106) do
     t.index ["resume_id"], name: "index_educations_on_resume_id"
   end
 
+  create_table "experiences", force: :cascade do |t|
+    t.string "from_date"
+    t.string "to_date"
+    t.string "address"
+    t.string "company"
+    t.text "description"
+    t.integer "resume_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_experiences_on_resume_id"
+  end
+
   create_table "resumes", force: :cascade do |t|
     t.string "name"
     t.string "contact"
@@ -65,4 +77,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_091106) do
   end
 
   add_foreign_key "educations", "resumes"
+  add_foreign_key "experiences", "resumes"
 end
