@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_14_092728) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_14_093721) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -87,7 +87,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_092728) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "technical_skills", force: :cascade do |t|
+    t.string "name"
+    t.string "experience"
+    t.integer "resume_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_technical_skills_on_resume_id"
+  end
+
   add_foreign_key "educations", "resumes"
   add_foreign_key "experiences", "resumes"
   add_foreign_key "projects", "experiences"
+  add_foreign_key "technical_skills", "resumes"
 end
