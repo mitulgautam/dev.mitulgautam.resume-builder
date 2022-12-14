@@ -1,21 +1,22 @@
+<% resume = params[:action] == 'index' ? @resume : resume %>
 <!DOCTYPE html>
 <html>
 <body>
 
-<h1><%= @resume.name %></h1>
-<p>Phone: <%= @resume.contact%></p>
-<p>Email: <%= @resume.email%></p>
+<h1><%= resume.name %></h1>
+<p>Phone: <%= resume.contact%></p>
+<p>Email: <%= resume.email%></p>
 
 <table>
   <tr>
     <td>
     	<div>	
         	<h1>Profile</h1>
-            <%= @resume.name + @resume.contact + @resume.address%>
+            <%= resume.name + resume.contact + resume.address%>
         </div>
          <div>	
         	<h1>Educations</h1>
-             <% @resume.educations.each do |education|%>
+             <% resume.educations.each do |education|%>
                 <div><%= education.from_year + " - " + education.to_year + ", " + education.address %></div>
                 <div><%= education.course %></div>
                 <div><%= education.institute %></div>
@@ -24,16 +25,16 @@
         </div>
         <div>	
         	<h1>Technical Skills</h1>
-            <p><%= @resume.technical_skills.pluck(:name).join(",") %></p>
+            <p><%= resume.technical_skills.pluck(:name).join(",") %></p>
         </div>
     </td>
     <td>
     	<div>	
         	<h1>Experience</h1>
-            <% @resume.experiences.each do |experience|%>
+            <% resume.experiences.each do |experience|%>
                 <div><%= experience.company + ", " + experience.from_date + " - " + experience.to_date + ", " + experience.address %></div>
                 <div><%= sanitize experience.description %></div>
-                    <% experience.projects.each do |project|%>
+                <% experience.projects.each do |project|%>
                 <div><%= project.name %></div>
                 <div>Duration: <%= project.duration %> Months</div>
                 <div>Tech Stack: <%= project.technologies %></div>
@@ -44,7 +45,5 @@
     </td>
   </tr>
 </table>
-
-
 </body>
 </html>

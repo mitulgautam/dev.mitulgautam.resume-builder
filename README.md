@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+Run using sudo ./bin/dev it uses tailwind and rails both

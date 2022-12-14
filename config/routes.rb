@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   resources :templates do
     get "/:resume_id" => "template#index", on: :collection
+    get "/download/:resume_id" => "template#download", on: :collection
   end
 end
